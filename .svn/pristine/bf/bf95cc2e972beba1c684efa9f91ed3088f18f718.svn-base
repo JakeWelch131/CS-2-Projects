@@ -1,0 +1,21 @@
+#include "utilities.hpp"
+String infix_to_postfix(const String input) {
+    int i = 0;
+    stack<String> S;
+    String lhs, rhs, op, temp = " ";
+
+    while(input[i] != 0) {
+        if (input[i] == ')') {
+            rhs = S.pop();
+            op = S.pop();
+            lhs = S.pop();
+            S.push(lhs + rhs + op);
+        }
+        else if (input[i] != '(') {
+            temp[0] = input[i];
+            S.push(temp);
+        }
+        ++i;
+    }
+    return S.pop();
+}

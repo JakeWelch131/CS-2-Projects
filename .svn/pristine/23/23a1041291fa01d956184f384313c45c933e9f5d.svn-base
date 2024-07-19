@@ -1,0 +1,51 @@
+#include <iostream>
+#include "../assembler/stack.hpp"
+#include "../string/string.hpp"
+#include <vector>
+#include <fstream>
+
+String infix_to_postfix(const String& input) {
+    int i = 0;
+    stack<String> S;
+    String lhs, rhs, op;
+    std::vector<String> vec = input.split(' ');
+    //size_t i = 0;
+
+
+    while(vec[i] != ';') {
+        
+        if (vec[i] == ')') {
+            rhs = S.pop();
+            op = S.pop();
+            lhs = S.pop();
+            S.push(lhs + " " + rhs + " "+ op);
+        }
+        else if (vec[i] != '(') {
+           
+            S.push(vec[i]);
+        }
+        ++i;
+    }
+    return S.pop();
+}
+
+int main() {
+    std::ifstream in;
+    in.open("data3-1.txt");
+    if (!in.is_open()) {
+        std::cerr << "File not found" << std::endl;
+        return 1;
+    }
+
+    String tempLine;
+        char ch;
+        while (!in.eof()) {
+            in.get(ch);
+            if(ch != ';')    tempLine += ch;
+            if (ch == ';') {
+            tempLine += ch;
+            std::cout << infix_to_postfix(tempLine) << std::endl;
+            tempLine = "";
+            }
+        }
+}

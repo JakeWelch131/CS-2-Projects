@@ -1,0 +1,9 @@
+#ifndef CS2_UTILITY
+#define CS2_UTILITY
+#include "stack.hpp"
+#include <iostream>
+#include "../string/string.hpp"
+
+String infix_to_postfix(const String&);
+
+#endif

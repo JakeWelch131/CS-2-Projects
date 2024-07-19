@@ -1,0 +1,89 @@
+/**
+ * Jacob Welch
+ * bigint.cpp
+ * CS 23001-001
+*/
+
+//This program is the implementation file for Project 1 Bigint
+
+#include "bigint.hpp"
+#include <iostream>
+
+bigint::bigint() {
+    for (int i=0; i<CAPACITY; ++i){
+        bigintArray[i]=0;
+    }
+}
+
+bigint::bigint(int num) {
+    for (int i = 0; i < CAPACITY; ++i){
+        bigintArray[i] = 0;
+    }
+
+    int position =  CAPACITY - 1;
+
+    while (num > 0 && position >= 0) {
+        bigintArray[position] = num % 10;
+        num = num / 10;
+        --position;
+        }        
+    }
+
+bigint::bigint(const char num[]) {
+    for (int i = 0; i < CAPACITY; ++i)
+        bigintArray[i] = 0;
+        
+    int length = 0;
+    while (num[length] != 0)
+        ++length;
+        
+    int index = CAPACITY - length;
+        
+    for (int i = 0; i < length; ++i) {
+        bigintArray[index + i] = num[i] - '0';
+    }
+}
+
+void bigint::debugPrint(std::ostream& out) const {
+    for (int i = 0; i < CAPACITY; ++i) {
+        out << bigintArray[i] << " | ";
+    }
+}
+
+bool operator==(const bigint& lhs, const bigint& rhs) {
+    for(int i = 0; i < CAPACITY; ++i) {
+        if (lhs.bigintArray[i] != rhs.bigintArray[i])
+            return false;
+    }
+    return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const bigint& rhs) {
+    int lastNum = 0;
+    bool found = false;
+    while(found == false && lastNum <  CAPACITY) {
+        if (rhs.bigintArray[lastNum] != 0)
+            found = true;
+        else
+            ++lastNum;
+    }
+    
+    if (lastNum == CAPACITY)
+        out << rhs.bigintArray[CAPACITY - 1];
+    else {
+        int i = lastNum;
+        int digits = 0;
+        while (i < CAPACITY) {
+            out << rhs.bigintArray[i];
+            ++i;
+            ++digits;
+            if(digits % 80 == 0)
+                out << std::endl;
+        }
+    }
+    return out;
+}
+
+
+
+

@@ -1,0 +1,52 @@
+// String Test Program
+//
+// Tests:   +
+//
+//
+#include <iostream>
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    
+    {
+        // Setup
+        String s1("");
+        String s2("b");
+        String c = s1 + s2;
+        // Test 
+        assert(c == "b");
+    }
+    
+    {
+        // Setup
+        String s1("abc");
+        String s2("Hi");
+        String c = s1 + s2;
+        // Test
+        assert(c == "abcHi");
+    }
+
+    {
+        // Setup
+        String s1("the ");
+        String s2("quick ");
+        String s3("red fox");
+        String c = s1 + s2 + s3;
+        // Test
+        assert(c == "the quick red fox");
+    }
+
+    {
+        // Setup
+        String s1("bc");
+        String s2("abcd");
+        String c = s1 + s2;
+        // Test
+        assert(!(c == "abcdbc"));
+    }
+
+    std::cout << "Done testing +." << std::endl;
+    return 0;
+}

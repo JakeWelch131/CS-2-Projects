@@ -1,0 +1,35 @@
+//  Jacob Welch
+//  9/15/2023
+//  Creating IO functions for lab4
+
+#include <iostream>
+#include <fstream>
+
+//prototype for function that opens 
+void readText();
+
+int main() {
+
+    readText();
+
+}
+
+void readText() {
+    std::ifstream file ("fileio-text.txt");
+    char ch;
+    
+    while (!file.eof()) {
+
+        file.get(ch);
+
+        if (ch != ' ') {
+            std::cout << ch;
+        }
+        else {
+            std::cout << std::endl;
+        } 
+        
+
+    }
+  
+}

@@ -1,0 +1,10 @@
+The bubble_sort function took the longest to execute at 1.04 seconds and took up 38.71%
+of the program's runtime. The explanation for the long runtime may be because the vector 
+loops through itself once until it has ran .size() times. This means the bubble_sort function's
+runtime grows exponentially everytime the .size() grows.
+
+The vector declarations are also large runtimes. This is because in bubble_sort, std::vector is called so many times 
+due to the exponential growth of the for loops. The declaration itself isn't taking up time, but the sheer amount of declarations.
+
+LESS_THAN takes up the third most time in the program. This is because everytime the program runs through the second for loop,
+LESS_THAN is called. As I've mentioned previously, the second for-loop is ran through at an exponentially large rate.

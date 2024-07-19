@@ -1,0 +1,46 @@
+/**
+ * Jacob Welch
+ * bigint.cpp
+ * CS 23001-001
+*/
+
+//This program is the implementation file for Project 1 Bigint
+
+#include "bigint.hpp"
+
+bigint::bigint() {
+    for (int i=0; i<CAPACITY; ++i){
+        bigintArray[i]=0;
+    }
+}
+
+bigint::bigint(int num) {
+    int remainder;
+        for (int i = 0; i < CAPACITY; ++i){
+            while (num >= 0) {
+                remainder = num % 10;
+                bigintArray[i] = remainder;
+                num = num / 10;
+        }        
+    }
+}
+
+bool operator==(const bigint& lhs, const bigint& rhs) {
+    for(int i = 0; i < CAPACITY; ++i) {
+        if (lhs.bigintArray[i] != rhs.bigintArray[i])
+            return false;
+    }
+    return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const bigint& rhs) {
+    for (int i = 0; i < CAPACITY; ++i) {
+        if (rhs.bigintArray[i])
+            out << i;
+    }
+    return out;
+}
+
+
+
+

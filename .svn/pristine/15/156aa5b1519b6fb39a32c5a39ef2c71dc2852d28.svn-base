@@ -1,0 +1,6 @@
+infix-postfix is: AX B C * +
+infix-postfix is: AX B CY * + D E - /
+infix-postfix is: A B + C E + *
+infix-postfix is: AX BX CY AY + BY + CX * * *
+infix-postfix is: H A B C + D * + F * G * E * * J +
+infix-postfix is: AX BY C * + D4 E - /

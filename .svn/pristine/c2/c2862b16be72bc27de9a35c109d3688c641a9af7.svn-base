@@ -1,0 +1,65 @@
+// String Test Program
+//
+// Tests:   ==
+//
+//
+#include <iostream>
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    
+    {
+        // Setup
+        String s("0");
+        // Test 
+        assert(s == "0");
+        // Verify
+        std::cout << "0 == ";
+        std::cout << s;
+        std::cout << std::endl;
+    }
+    
+    {
+        // Setup
+        String s1("1234");
+        String s2("1234");
+        // Test
+        assert(s1 == s2);
+        // Verify
+        std::cout << s1;
+        std::cout << " == ";
+        std::cout << s2;
+        std::cout << std::endl;
+    }
+
+    {
+        // Setup
+        String s1("abcd");
+        String s2("bcd");
+        // Test
+        assert(!(s1 == s2));
+        // Verify
+        std::cout << s1;
+        std::cout << " != ";
+        std::cout << s2;
+        std::cout << std::endl;
+    }
+
+    {
+        // Setup
+        String s1("abc");
+        String s2("abcd");
+        // Test
+        assert(!(s1 == s2));
+        // Verify
+        std::cout << s1;
+        std::cout << " != ";
+        std::cout << s2;
+        std::cout << std::endl;
+    }
+
+    std::cout << "Done testing ==." << std::endl;
+    return 0;
+}

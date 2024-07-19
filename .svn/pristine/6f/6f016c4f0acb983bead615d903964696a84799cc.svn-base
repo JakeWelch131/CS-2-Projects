@@ -1,0 +1,91 @@
+/**
+ * Jacob Welch
+ * bigint.cpp
+ * CS 23001-001
+*/
+
+//This program is the implementation file for Project 1 Bigint
+
+#include "bigint.hpp"
+
+bigint::bigint(){
+    for (int i=0; i < CAPACITY; ++i){
+        bigintArray[i]=0;
+    }
+}
+
+ bigint::bigint(int num) {
+     for (int i = 0; i < CAPACITY; ++i){
+         bigintArray[i] = 0;
+     }
+    
+     for (int i = 0; i < CAPACITY; ++i){
+        bigintArray[i] = num % 10;         
+	    num = num / 10; 
+         }        
+     }
+
+ bigint::bigint(const char num[]) {
+   for (int i = 0; i < CAPACITY; ++i)
+         bigintArray[i] = 0;
+        
+     int length = 0;
+     while (num[length] != 0)
+         ++length;
+         
+    int position = 0;
+    
+    for(int i = length - 1; i >= 0; --i){
+        bigintArray[position] = num[i] - '0';
+        ++position;
+    }
+}
+
+
+ void bigint::debugPrint(std::ostream& out) const {
+     for (int i = 0; i < CAPACITY; ++i) {
+         out << bigintArray[i] << " | ";
+     }
+ }
+
+bool operator==(const bigint& lhs, const bigint& rhs) {
+    for(int i = 0; i < CAPACITY; ++i) {
+        if (lhs.bigintArray[i] != rhs.bigintArray[i])
+            return false;
+    }
+    return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const bigint& rhs) {
+   int nonZeroindex = CAPACITY - 1;
+
+    while ((nonZeroindex > 0) && (rhs.bigintArray[nonZeroindex] == 0)) {
+            --nonZeroindex;
+    }
+
+    while (nonZeroindex >= 0){
+        if (nonZeroindex % 80)
+            out << rhs.bigintArray[nonZeroindex];
+            
+        else
+            out << rhs.bigintArray[nonZeroindex] << std::endl;
+    --nonZeroindex;
+    }
+    return out;
+}
+
+bigint bigint::operator+(const bigint &rhs) const{
+    int carry = 0;
+    bigint outcome;
+    for (int i = 0; i < CAPACITY; ++i) {
+        int sum = bigintArray[i] + rhs.bigintArray[i] + carry;
+        outcome.bigintArray[i] = sum % 10;
+        carry = sum / 10;
+    }
+    return outcome;
+}
+
+//implement test cases
+int bigint::operator[](int position) {
+    return bigintArray[position];
+}

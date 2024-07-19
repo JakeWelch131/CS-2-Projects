@@ -1,0 +1,13 @@
+#ifndef CS2_UTILITY
+#define CS2_UTILITY
+#include "stack.hpp"
+#include <iostream>
+#include "../string/string.hpp"
+#include <fstream>
+
+String infix_to_postfix(const String&);
+void postfix_to_assembly(std::ifstream&, std::ostream&);
+void evaluate(const String&, const String&, const String&);
+String op_to_assembly(const String&);
+String int_to_String(const int&);
+#endif

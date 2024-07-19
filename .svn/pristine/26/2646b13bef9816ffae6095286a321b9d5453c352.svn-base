@@ -1,0 +1,79 @@
+/**
+ * Jacob Welch
+ * bigint.cpp
+ * CS 23001-001
+*/
+
+//This program is the implementation file for Project 1 Bigint
+
+#include "bigint.hpp"
+#include <iostream>
+
+bigint::bigint() {
+    for (int i=0; i<CAPACITY; ++i){
+        bigintArray[i]=0;
+    }
+}
+
+bigint::bigint(int num) {
+    for (int i = 0; i < CAPACITY; ++i){
+        bigintArray[i] = 0;
+    }
+
+    int position =  CAPACITY - 1;
+
+    while (num > 0 && position >= 0) {
+        bigintArray[position] = num % 10;
+        num = num / 10;
+        --position;
+        }        
+    }
+
+bigint::bigint(const char num[]) {
+    for (int i = 0; i < CAPACITY; ++i)
+        bigintArray[i] = 0;
+        
+    int length = 0;
+    while (num[length] != 0)
+        ++length;
+        
+    int index = CAPACITY - length;
+        
+    for (int i = 0; i < length; ++i) {
+        bigintArray[index + i] = num[i] - '0';
+    }
+}
+
+void bigint::debugPrint(std::ostream& out) const {
+    for (int i = 0; i < CAPACITY; ++i) {
+        out << bigintArray[i] << " | ";
+    }
+}
+
+bool operator==(const bigint& lhs, const bigint& rhs) {
+    for(int i = 0; i < CAPACITY; ++i) {
+        if (lhs.bigintArray[i] != rhs.bigintArray[i])
+            return false;
+    }
+    return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const bigint& rhs) {
+    int nonZeroindex = 0;
+
+    for (int i = 0; i < CAPACITY - 1; ++i) {
+        if (rhs.bigintArray[i] == 0) {
+            ++nonZeroindex;
+        } else {
+            break; 
+        }
+    }
+
+    for (int i = nonZeroindex; i < CAPACITY; ++i) {
+        out << rhs.bigintArray[i];
+    }
+    return out;
+}
+
+
+

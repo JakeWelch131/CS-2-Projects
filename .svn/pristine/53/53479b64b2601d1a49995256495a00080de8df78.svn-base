@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cassert>
+#include "string.hpp"
+
+int main() {
+    // Test Case 1: Normal case with space as ch
+    {
+        String s("abc ef gh");
+        std::vector<String> result = s.split(' ');
+        assert(result[0] == "abc");
+        assert(result[1] == "ef");
+        assert(result[2] == "gh");
+        std::cout << result[0] << std::endl;
+        std::cout << result[1] << std::endl;
+        std::cout << result[2] << std::endl;
+    }
+
+    // Test Case 2: Normal case with '-' as ch
+    {
+        String s("-a--b-");
+        std::vector<String> result = s.split('-');
+        assert(result[0] == "");
+        assert(result[1] == "a");
+        assert(result[2] == "");
+        assert(result[3] == "b");
+        assert(result[4] == "");
+    }
+
+    // Test Case 3: No ch
+    {
+        String s("no_chToFind");
+        std::vector<String> result = s.split('-');
+        assert(result[0] == "no_chToFind");
+    }
+
+    // Test Case 4: ch at the beginning and end
+    {
+        String s("-abc-def-");
+        std::vector<String> result = s.split('-');
+        assert(result[0] == "");
+        assert(result[1] == "abc");
+        assert(result[2] == "def");
+        assert(result[3] == "");
+    }
+
+    // Test Case 5: empty string
+    {
+        String s;
+        std::vector<String> result = s.split('-');
+        assert(result[0] == "");
+    }
+
+    std::cout << "Thank god everything is passing!" << std::endl;
+
+    return 0;
+}

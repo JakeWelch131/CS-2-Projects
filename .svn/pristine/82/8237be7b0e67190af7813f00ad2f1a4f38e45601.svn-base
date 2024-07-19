@@ -1,0 +1,41 @@
+#include <iostream>
+#include "utilities.hpp"
+#include <fstream>
+
+int main(int argc, char const* argv[]) {
+
+    if (argc < 2) {
+        std::cerr <<"No input file given" << std::endl;
+    }
+
+    std::ifstream in(argv[1]);
+    if (!in) {
+        std::cerr << "File not found: data3-1.txt" << std::endl;
+        exit(1);
+    }
+
+    std::ofstream outputFile(argv[2]);
+    if (!outputFile) {
+        std::cerr << "error opening the file" << std::endl;
+        return 1;
+    }
+
+    String tempLine;
+    char ch;
+    in.get(ch);
+
+    while (!in.eof()) {
+        if (ch != ';') {
+            tempLine += ch;
+            in.get(ch);
+            
+        }
+        else {
+            outputFile << "infix-postfix is: " << tempLine << std::endl;
+            in.get(ch);  
+        }
+    }
+    in.close();
+    outputFile.close();
+    return 0;
+}

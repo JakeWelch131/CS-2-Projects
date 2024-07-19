@@ -1,0 +1,116 @@
+//
+//
+// File:        logentry.cpp  
+//       
+// Version:     1.0
+// Date:        
+// Author:      
+//
+// Description: Class implementation for a log entry.
+//
+//
+ 
+#include "string.hpp"
+#include "logentry.hpp"
+#include <iostream>
+#include <vector>
+
+int convertInt(String temp) {
+    const int yearSize = temp.length();
+    int num[yearSize];
+    for (int i = 0; i < temp.length(); ++i) {
+        num[i] = temp[i] - '0';
+    }
+    int returnNum = 0;
+    for (int i = 0; i < temp.length(); ++i) {
+        returnNum *= 10;
+        returnNum += num[i];
+    }
+    return returnNum;
+}
+
+Date::Date(String s) {
+    day = s.substr(1, 2);
+    month = s.substr(4, 6);
+    String temp = s.substr(8, 11);
+    year = convertInt(temp);
+    
+}
+
+std::ostream& operator<<(std::ostream& out, const Date& date) {
+    out << date.day << date.month << date.year << std::endl;
+}
+
+Time::Time(String s) {
+    String tempHour = s.substr(13, 14);
+    hour = convertInt(tempHour);
+    String tempMinute = s.substr(16, 17);
+    minute = convertInt(tempMinute);
+    String tempSecond = s.substr(19, 20);
+    second = convertInt(tempSecond);
+}
+
+std::ostream& operator<<(std::ostream& out, const Time& time) {
+    out << time.hour << time.minute << time.second << std::endl;
+}
+
+// REQUIRES:
+// ENSURES: 
+//
+LogEntry::LogEntry(String s) {
+    // ...
+    std::vector<String> vec = s.split(' ');
+    if (vec.size() != 10) {
+        for (int i = 0; i <= 10; ++i) {
+            vec[i] = "";
+        }
+    }
+    host = vec[0];
+    date = vec[3];
+    time = vec[3];
+    request = vec[5] + vec[6] + vec[7];
+    status = vec[8];
+    String tempNumber_of_bytes = vec[9];
+    number_of_bytes = convertInt(tempNumber_of_bytes);
+}
+
+std::ostream& operator<<(std::ostream& out, const LogEntry& logEntry) {
+    out << logEntry.getHost();
+    out << logEntry.getDate();
+    out << logEntry.getTime();
+    out << logEntry.getRequest();
+    out << logEntry.getStatus();
+    out << logEntry.getBytes();
+}
+
+// REQUIRES:
+// ENSURES: 
+//
+std::vector<LogEntry> parse(std::istream& in) {
+    std::vector<LogEntry> result;
+
+    return result;
+}
+
+// REQUIRES:
+// ENSURES: 
+//
+void output_all(std::ostream& out, const std::vector<LogEntry> &) {
+    
+}
+
+// REQUIRES:
+// ENSURES: 
+//
+void by_host(std::ostream& out, const std::vector<LogEntry>&) {
+
+}
+
+/// REQUIRES:
+// ENSURES: 
+//
+int byte_count(const std::vector<LogEntry> &) {
+    
+    return 0;
+}
+

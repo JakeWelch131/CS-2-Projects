@@ -1,0 +1,26 @@
+ 13:21:00 up 21 days,  3:48, 24 users,  load average: 1.48, 1.86, 1.45
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+asmit447 pts/8    10.22.34.148     12:39   18.00s  0.23s  0.23s -bash
+dbhati   pts/34   10.20.77.210     12:00   45:32   0.20s  0.20s -bash
+emorri40 pts/47   10.32.0.207      12:39    7.00s  0.20s  0.20s -bash
+smcglau2 pts/48   10.11.110.8      12:49    4:28   0.21s  0.21s -bash
+aalramad pts/54   10.32.0.201      12:19    8.00s  0.22s  0.22s -bash
+aobryant pts/55   10.22.34.76      12:39   12.00s  0.21s  0.21s -bash
+jkrizan  pts/56   10.32.0.217      12:19    1:56   0.36s  0.36s -bash
+jwelch30 pts/61   10.32.0.209      12:26    0.00s  0.22s  0.02s w
+ayarian1 pts/62   10.11.106.23     12:49   20.00s  0.27s  0.03s vim my_name_is.cpp
+jkoeppel pts/66   10.22.34.85      12:40    3.00s  0.26s  0.26s -bash
+vcavalla pts/67   10.32.0.222      12:56    4:23   0.20s  0.20s -bash
+mmcnish1 pts/63   10.32.0.218      12:31   12.00s  0.25s  0.25s -bash
+walfehai pts/64   10.32.0.202      12:39    2.00s  0.22s  0.22s -bash
+aanello  pts/65   10.22.18.95      12:40    4.00s  0.27s  0.27s -bash
+jwoods33 pts/69   10.22.2.69       12:40    8.00s  0.18s  0.18s -bash
+iesselbu pts/68   10.22.49.154     12:40    4.00s  0.22s  0.02s nano w.txt
+karquill pts/50   10.11.104.197    12:00    8:17   0.54s  0.51s -bash
+llounder pts/51   10.32.0.223      13:06   22.00s  0.20s  0.20s -bash
+rhuber2  pts/52   37.120.244.155   12:13   57:15   0.17s  0.17s -bash
+jmarkij1 pts/58   10.22.2.82       12:30   12.00s  0.28s  0.28s -bash
+dyoder18 pts/59   10.32.0.214      12:54    4.00s  0.20s  0.20s -bash
+jbisset6 pts/60   10.22.9.244      12:34    1.00s  0.39s  0.39s -bash
+mluther2 pts/70   10.22.34.86      12:40    4.00s  0.39s  0.39s -bash
+aalluhai pts/72   10.32.0.212      12:42    3.00s  0.28s  0.28s -bash
